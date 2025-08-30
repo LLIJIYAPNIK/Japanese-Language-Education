@@ -1,3 +1,5 @@
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from backend.database import SessionLocal
 from backend.services.crud import CRUDBase
 from backend.models import Translation, Word, word_translation
@@ -9,7 +11,7 @@ translation_crud = CRUDBase[Translation](Translation)
 
 
 async def add_word_translation_link(
-        session: SessionLocal,
+        session: AsyncSession,
         kanji: str,
         kana: str,
         translation_text: str,
@@ -44,7 +46,7 @@ async def add_word_translation_link(
             select(word_translation)
             .where(and_(
                 (word_translation.c.word_id == word.id),
-                (translation.c.id == translation.id)
+                (translation.id == translation.id)
             ))
         )
 

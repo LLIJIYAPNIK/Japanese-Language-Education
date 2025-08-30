@@ -3,6 +3,8 @@ from aiogram.filters import CommandStart
 from aiogram.fsm.storage.memory import MemoryStorage
 from config import TELEGRAM_TOKEN
 
+
+
 TOKEN = TELEGRAM_TOKEN
 
 bot = Bot(token=TOKEN)

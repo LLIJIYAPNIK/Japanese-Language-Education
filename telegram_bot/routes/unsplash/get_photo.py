@@ -4,7 +4,7 @@ from aiogram.filters import CommandStart
 
 from main import bot
 
-from config import UNSPLASH_KEY, UNSPLASH_REGULAR_IMAGES_DIR, UNSPLASH_SMALL_IMAGES_DIR
+from config import UNSPLASH_CLIENT_ID, UNSPLASH_REGULAR_IMAGES_DIR, UNSPLASH_SMALL_IMAGES_DIR
 
 from backend.database import SessionLocal
 from backend.services.unsplash import UnsplashService
@@ -16,7 +16,7 @@ unsplash_router = Router()
 async def send_photo(message: types.Message):
     async with SessionLocal() as db_session, aiohttp.ClientSession() as http_client:
         unsplash_service = UnsplashService(
-            api_key=UNSPLASH_KEY,
+            api_key=UNSPLASH_CLIENT_ID,
             regular_dir=UNSPLASH_REGULAR_IMAGES_DIR,
             small_dir=UNSPLASH_SMALL_IMAGES_DIR,
             db_session=db_session,
