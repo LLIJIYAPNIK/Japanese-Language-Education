@@ -16,7 +16,7 @@ async def search_words_by_translation(
         select(Translation)
         .options(
             joinedload(Translation.words)
-            .joinedload(Word.translation)
+            .joinedload(Word.translations)
         )
     )
     translations = result.unique().scalars().all()
@@ -31,7 +31,7 @@ async def search_words_by_translation(
                     "kanji": word.kanji,
                     "kana": word.kana,
                     "rating": word.rating,
-                    "translations": [t for t in word.translations],
+                    "translations": [t.text for t in word.translations],
                     "matched_translations": translation.text,
                     "priority": priority
                 }

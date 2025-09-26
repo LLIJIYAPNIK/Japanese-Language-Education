@@ -5,7 +5,7 @@
 # VS Code
 .vscode/
 #gigaide
-./.gigaide
+.gigaide/
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -73,10 +73,6 @@ dmypy.json
 
 # pycache в любом месте проекта
 **/__pycache__/
-
-### Environment variables ###
-.env
-.env.local
 
 ### Docker ###
 docker-compose.override.yml

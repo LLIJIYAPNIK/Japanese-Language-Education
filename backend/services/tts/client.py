@@ -28,7 +28,7 @@ class VoicevoxTTSClient:
         )
 
     async def _save_to_file(self, audio_query):
-        with open(os.path.join(self.data_directory, self._get_file_path()), "wb") as file:
+        with open(self._get_file_path(), "wb") as file:
             file.write(await audio_query.synthesis(speaker=self.speaker_number))
 
     def _generate_audio_hash(self):
@@ -36,7 +36,7 @@ class VoicevoxTTSClient:
         return hashlib.md5(key.encode()).hexdigest()
 
     def _get_file_path(self):
-        return os.path.join(self.data_directory, self._generate_audio_hash())
+        return f"{os.path.join(self.data_directory, self._generate_audio_hash())}.wav"
 
     def _get_audio_from_path(self):
         with open(self._get_file_path(), "rb") as f:

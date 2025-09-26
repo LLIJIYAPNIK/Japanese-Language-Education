@@ -2,7 +2,7 @@ import aiohttp
 from aiogram import Router, types
 from aiogram.filters import CommandStart
 
-from main import bot
+# from main import bot
 
 from config import UNSPLASH_CLIENT_ID, UNSPLASH_REGULAR_IMAGES_DIR, UNSPLASH_SMALL_IMAGES_DIR
 
@@ -24,9 +24,9 @@ async def send_photo(message: types.Message):
             page=10,
             image_number=3
         )
-        try:
-            image_id, regular_url, small_url = await unsplash_service.get_image_data()
-            await unsplash_service.save_images(image_id, regular_url, small_url)
-            await bot.send_photo(message.chat.id, regular_url)
-        except Exception as e:
-            await message.answer("Произошла ошибка при попытке отправки изображения...")
+        # try:
+        #     image_id, regular_url, small_url = await unsplash_service.get_image_data()
+        #     await unsplash_service.save_images(image_id, regular_url, small_url)
+        #     await bot.send_photo(message.chat.id, regular_url)
+        # except Exception as e:
+        #     await message.answer("Произошла ошибка при попытке отправки изображения...")
